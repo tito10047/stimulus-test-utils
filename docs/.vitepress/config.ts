@@ -66,6 +66,12 @@ export default defineConfig({
             { text: 'Troubleshooting', link: '/guide/troubleshooting' },
           ],
         },
+        {
+          text: 'Integrations',
+          items: [
+            { text: 'Symfony AssetMapper', link: '/guide/asset-mapper' },
+          ],
+        },
       ],
       '/cookbook/': [
         {
