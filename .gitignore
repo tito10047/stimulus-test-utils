@@ -31,4 +31,3 @@ Thumbs.db
 # .pnpm-store/
 /.junie/
 /.idea/
-package-lock.json
