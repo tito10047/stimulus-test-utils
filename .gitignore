@@ -31,3 +31,8 @@ Thumbs.db
 # .pnpm-store/
 /.junie/
 /.idea/
+
+# Docs (VitePress + TypeDoc)
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/api/generated/

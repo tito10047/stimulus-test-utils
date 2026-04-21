@@ -102,7 +102,7 @@ No `Application.start()`, no `document.body.innerHTML = …`, no manual `await n
 - **Attribute helpers** — `stimulusController`, `stimulusTarget`, `stimulusAction`, `combine` produce safe, typo‑free `data-*` attributes.
 - **`cleanup()`** — automatically stops the `Application` and removes the fixture (via the `/register` setup, or called manually).
 
-A complete API overview is available in [`public_api.md`](./public_api.md) (and soon on the project's documentation site).
+A complete API overview is available in [`public_api.md`](./public_api.md) and on the documentation site (see [Documentation](#documentation) below).
 
 ## Supported versions
 
@@ -120,6 +120,46 @@ npm run build     # tsup -> dist/
 ```
 
 Pull requests are welcome. Before opening a PR, please run `npm run typecheck` and `npx vitest run`.
+
+## Documentation
+
+The full documentation lives in [`docs/`](./docs) and is published at **https://tito10047.github.io/stimulus-test-utils/**.
+
+It is built with [VitePress](https://vitepress.dev/) (prose + navigation) and [TypeDoc](https://typedoc.org/) with [`typedoc-plugin-markdown`](https://github.com/tgreyuk/typedoc-plugin-markdown) (auto‑generated API reference from TSDoc comments in `src/`).
+
+### Working on the docs locally
+
+```bash
+npm ci
+npm run docs:dev       # start dev server on http://localhost:5173
+```
+
+This generates the API reference into `docs/api/generated/` (gitignored) and runs the VitePress dev server with hot‑reload. Edit any `.md` file under `docs/` and see the change instantly.
+
+### Building a static site
+
+```bash
+npm run docs:build     # runs docs:api, then vitepress build
+npm run docs:preview   # serve the production build locally
+```
+
+The static site is emitted to `docs/.vitepress/dist/`.
+
+### Deploying to GitHub Pages
+
+Deployment is fully automated via [`.github/workflows/docs.yml`](./.github/workflows/docs.yml):
+
+- **Trigger:** every push to `main`, or a manual run from the *Actions* tab (`workflow_dispatch`).
+- **Build:** `npm ci` → `npm run docs:build` → upload `docs/.vitepress/dist` as a Pages artifact.
+- **Deploy:** `actions/deploy-pages@v4` publishes it.
+
+One-time repository setup (only needed once):
+
+1. Go to **Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+3. Push to `main` (or trigger the workflow manually). The first run will populate the URL shown above.
+
+> If you fork the repository, update the `base` option in [`docs/.vitepress/config.ts`](./docs/.vitepress/config.ts) to match your repository name (for example `/my-fork/`), and tweak the GitHub link in the same file.
 
 ## License
 
