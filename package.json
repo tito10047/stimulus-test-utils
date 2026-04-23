@@ -1,6 +1,6 @@
 {
   "name": "@tito10047/stimulus-test-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Zero-config, Testing-Library-flavoured test harness for Stimulus controllers.",
   "type": "module",
   "license": "MIT",
