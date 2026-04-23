@@ -19,7 +19,7 @@ Runtime:
 - `cleanup()` — stop every `Application` and remove every fixture
 - `createUserEvent()` / `fireEvent(element, event, init?)` — user-event simulation + low-level escape hatch
 - `waitFor(callback, options?)` / `nextTick()` — async assertion helpers
-- `stimulusController` / `stimulusTarget` / `stimulusAction` / `combine` — `data-*` attribute helpers
+- `attr.controller` / `attr.target` / `attr.action` / `attr.combine` — `data-*` attribute helpers
 - `inferIdentifier(ControllerClass)` / `identifierFromPath(path)` / `normalizeIdentifier(raw)` — identifier utilities
 
 Types:

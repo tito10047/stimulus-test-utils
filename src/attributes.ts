@@ -231,3 +231,13 @@ export function combine(...specs: AttrSpec[]): AttrSpec {
 
   return createSpec(merged)
 }
+
+/**
+ * Grouped attribute helpers.
+ */
+export const attr = {
+  controller: stimulusController,
+  target: stimulusTarget,
+  action: stimulusAction,
+  combine,
+}

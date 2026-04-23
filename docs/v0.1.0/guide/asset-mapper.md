@@ -61,17 +61,17 @@ export default defineConfig({
 4. Write a test next to your controller — `assets/controllers/hello_controller.test.js`:
 
 ```js
-import { render, stimulusController, stimulusTarget, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.target, attr.action } from '@tito10047/stimulus-test-utils'
 import { expect, test } from 'vitest'
 import HelloController from './hello_controller.js'
 
 test('greets by name', async () => {
   const { controller, user, element, getByRole } = await render(HelloController, {
     html: `
-      <div ${stimulusController('hello', { greeting: 'Hi' })}>
-        <input ${stimulusTarget('hello', 'name')} />
-        <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-        <span ${stimulusTarget('hello', 'output')}></span>
+      <div ${attr.controller('hello', { greeting: 'Hi' })}>
+        <input ${attr.target('hello', 'name')} />
+        <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+        <span ${attr.target('hello', 'output')}></span>
       </div>
     `,
   })
@@ -98,7 +98,7 @@ Your production code loads Stimulus via AssetMapper's `importmap.php`, from `ass
 If you follow the Symfony UX / AssetMapper convention of sub-folder controllers (e.g. `assets/controllers/Users/List_controller.js` → identifier `users--list`), pass the path directly to the helpers and they will normalize it for you:
 
 ```js
-stimulusController('Users/List_controller.js', { page: 1 })
+attr.controller('Users/List_controller.js', { page: 1 })
 // => data-controller="users--list" data-users--list-page-value="1"
 ```
 
@@ -187,7 +187,7 @@ php bin/console importmap:require @tito10047/stimulus-test-utils
    })
    ```
 
-   **b)** If you prefer Vitest's ergonomics (watch mode, snapshot, richer assertions) but still want AssetMapper to own the dependency graph, combine both: use `asset-mapper-test-bundle` for symlinks *and* `vitest` as the runner. In that case `vitest` itself still has to be in `node_modules/` — so you end up with a very small `devDependencies` block in `package.json` just for the runner:
+   **b)** If you prefer Vitest's ergonomics (watch mode, snapshot, richer assertions) but still want AssetMapper to own the dependency graph, attr.combine both: use `asset-mapper-test-bundle` for symlinks *and* `vitest` as the runner. In that case `vitest` itself still has to be in `node_modules/` — so you end up with a very small `devDependencies` block in `package.json` just for the runner:
 
    ```json
    {

@@ -109,19 +109,19 @@ type ControllerConstructor<T extends Controller = Controller> = {
 
 ## Typed fixtures with helpers
 
-The helpers are fully typed too. `stimulusController` widens its `values` parameter to accept anything `JSON.stringify`-able, and `stimulusAction` type-checks its `options`:
+The helpers are fully typed too. `attr.controller` widens its `values` parameter to accept anything `JSON.stringify`-able, and `attr.action` type-checks its `options`:
 
 ```ts
-import { stimulusController, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { attr.controller, attr.action } from '@tito10047/stimulus-test-utils'
 
-stimulusController('hello', {
+attr.controller('hello', {
   greeting: 'Hi',       // string
   count: 3,             // number
   active: true,         // boolean
   user: { name: 'Ada' } // object — JSON.stringify-ed
 })
 
-stimulusAction('hello', 'submit', 'submit', {
+attr.action('hello', 'submit', 'submit', {
   prevent: true,
   // @ts-expect-error: typo surfaces at compile time
   prevenr: true,

@@ -1,17 +1,21 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'stimulus-test-utils',
+  title: 'Stimulus test utils',
   description: 'Zero-config, Testing-Library-flavoured test harness for Stimulus controllers.',
   base: '/stimulus-test-utils/',
   lang: 'en-US',
   cleanUrls: true,
   lastUpdated: true,
 
+  rewrites: {
+    'v0.1.0/:path*': ':path*'
+  },
+
   head: [
     ['meta', { name: 'theme-color', content: '#77216f' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'stimulus-test-utils' }],
+    ['meta', { property: 'og:title', content: 'Stimulus test utils' }],
     ['meta', {
       property: 'og:description',
       content: 'Zero-config, Testing-Library-flavoured test harness for Stimulus controllers.',
@@ -23,6 +27,12 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/introduction' },
       { text: 'Cookbook', link: '/cookbook/' },
       { text: 'API', link: '/api/' },
+      {
+        text: 'v0.1.0',
+        items: [
+          { text: 'Changelog', link: 'https://github.com/tito10047/stimulus-test-utils/releases' },
+        ],
+      },
       {
         text: 'Links',
         items: [

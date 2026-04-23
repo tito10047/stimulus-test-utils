@@ -7,18 +7,18 @@ Well-behaved Stimulus controllers update ARIA state — `aria-expanded`, `aria-s
 `keydown.enter` and `keydown.esc` are Stimulus shorthands for event filters. Drive them with `user.keyboard`:
 
 ```ts
-import { render, stimulusController, stimulusTarget, stimulusAction, combine } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.target, attr.action, attr.combine } from '@tito10047/stimulus-test-utils'
 import KeyboardController from '../src/keyboard_controller.js'
 
 test('Enter submits, Escape cancels', async () => {
   const { element, user } = await render(KeyboardController, {
     html: `
-      <div ${combine(
-        stimulusController('keyboard'),
-        stimulusAction('keyboard', 'onEnter', 'keydown.enter'),
-        stimulusAction('keyboard', 'onEscape', 'keydown.esc'),
+      <div ${attr.combine(
+        attr.controller('keyboard'),
+        attr.action('keyboard', 'onEnter', 'keydown.enter'),
+        attr.action('keyboard', 'onEscape', 'keydown.esc'),
       )} tabindex="0">
-        <span ${stimulusTarget('keyboard', 'status')}>idle</span>
+        <span ${attr.target('keyboard', 'status')}>idle</span>
       </div>
     `,
   })
@@ -53,19 +53,19 @@ expect(trigger.getAttribute('aria-expanded')).toBe('true')
 ```ts
 const { user, getByRole, element } = await render(TabsController, {
   html: `
-    <div ${combine(stimulusController('tabs', { activeIndex: 0 }, { active: 'is-active' }))}>
+    <div ${attr.combine(attr.controller('tabs', { activeIndex: 0 }, { active: 'is-active' }))}>
       <div role="tablist">
-        <button role="tab" ${combine(
-          stimulusTarget('tabs', 'tab'),
-          stimulusAction('tabs', 'select', 'click'),
+        <button role="tab" ${attr.combine(
+          attr.target('tabs', 'tab'),
+          attr.action('tabs', 'select', 'click'),
         )}>One</button>
-        <button role="tab" ${combine(
-          stimulusTarget('tabs', 'tab'),
-          stimulusAction('tabs', 'select', 'click'),
+        <button role="tab" ${attr.combine(
+          attr.target('tabs', 'tab'),
+          attr.action('tabs', 'select', 'click'),
         )}>Two</button>
       </div>
-      <section ${stimulusTarget('tabs', 'panel')}>First</section>
-      <section ${stimulusTarget('tabs', 'panel')}>Second</section>
+      <section ${attr.target('tabs', 'panel')}>First</section>
+      <section ${attr.target('tabs', 'panel')}>Second</section>
     </div>
   `,
 })

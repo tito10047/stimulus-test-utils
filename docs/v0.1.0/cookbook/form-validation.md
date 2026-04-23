@@ -13,16 +13,16 @@ test('invalid input shows error and dispatches "invalid"', async () => {
   const { user, element, getByLabelText } = await render(FormValidatorController, {
     identifier: 'form-validator',
     html: `
-      <div ${stimulusController('form-validator', {
+      <div ${attr.controller('form-validator', {
         pattern: '^\\d{3}$',
         message: 'Must be 3 digits',
       })}>
         <label for="code">Code</label>
-        <input id="code" ${combine(
-          stimulusTarget('form-validator', 'input'),
-          stimulusAction('form-validator', 'validate', 'input'),
+        <input id="code" ${attr.combine(
+          attr.target('form-validator', 'input'),
+          attr.action('form-validator', 'validate', 'input'),
         )} />
-        <p ${stimulusTarget('form-validator', 'error')}></p>
+        <p ${attr.target('form-validator', 'error')}></p>
       </div>
     `,
   })
@@ -40,13 +40,13 @@ test('valid input clears error and dispatches "valid"', async () => {
   const { user, element, getByLabelText } = await render(FormValidatorController, {
     identifier: 'form-validator',
     html: `
-      <div ${stimulusController('form-validator', { pattern: '^\\d{3}$' })}>
+      <div ${attr.controller('form-validator', { pattern: '^\\d{3}$' })}>
         <label for="code">Code</label>
-        <input id="code" ${combine(
-          stimulusTarget('form-validator', 'input'),
-          stimulusAction('form-validator', 'validate', 'input'),
+        <input id="code" ${attr.combine(
+          attr.target('form-validator', 'input'),
+          attr.action('form-validator', 'validate', 'input'),
         )} />
-        <p ${stimulusTarget('form-validator', 'error')}>preset error</p>
+        <p ${attr.target('form-validator', 'error')}>preset error</p>
       </div>
     `,
   })

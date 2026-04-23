@@ -7,10 +7,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import {
   render,
-  stimulusController,
-  stimulusTarget,
-  stimulusAction,
-  combine,
+  attr,
   fireEvent,
 } from '../src/index.js'
 import {
@@ -29,10 +26,10 @@ describe('HelloController', () => {
   it('updates output when the Greet button is clicked', async () => {
     const { controller, user, element, getByRole } = await render(HelloController, {
       html: `
-        <div ${stimulusController('hello', { greeting: 'Hi' })}>
-          <input ${stimulusTarget('hello', 'name')} />
-          <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-          <span ${stimulusTarget('hello', 'output')}></span>
+        <div ${attr.controller('hello', { greeting: 'Hi' })}>
+          <input ${attr.target('hello', 'name')} />
+          <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+          <span ${attr.target('hello', 'output')}></span>
         </div>
       `,
     })
@@ -45,10 +42,10 @@ describe('HelloController', () => {
   it('default greeting is "Hello" when value is omitted', async () => {
     const { controller, user, element, getByRole } = await render(HelloController, {
       html: `
-        <div ${stimulusController('hello')}>
-          <input ${stimulusTarget('hello', 'name')} />
-          <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-          <span ${stimulusTarget('hello', 'output')}></span>
+        <div ${attr.controller('hello')}>
+          <input ${attr.target('hello', 'name')} />
+          <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+          <span ${attr.target('hello', 'output')}></span>
         </div>
       `,
     })
@@ -60,11 +57,11 @@ describe('HelloController', () => {
 
 describe('CounterController', () => {
   const fixture = (count = 0, step = 1) => `
-    <div ${stimulusController('counter', { count, step })}>
-      <span ${stimulusTarget('counter', 'display')}></span>
-      <button ${stimulusAction('counter', 'increment', 'click')}>+</button>
-      <button ${stimulusAction('counter', 'decrement', 'click')}>-</button>
-      <button ${stimulusAction('counter', 'reset', 'click')}>reset</button>
+    <div ${attr.controller('counter', { count, step })}>
+      <span ${attr.target('counter', 'display')}></span>
+      <button ${attr.action('counter', 'increment', 'click')}>+</button>
+      <button ${attr.action('counter', 'decrement', 'click')}>-</button>
+      <button ${attr.action('counter', 'reset', 'click')}>reset</button>
     </div>
   `
 
@@ -104,16 +101,16 @@ describe('FormValidatorController', () => {
     const { user, element, getByLabelText } = await render(FormValidatorController, {
       identifier: 'form-validator',
       html: `
-        <div ${stimulusController('form-validator', {
+        <div ${attr.controller('form-validator', {
           pattern: '^\\d{3}$',
           message: 'Must be 3 digits',
         })}>
           <label for="code">Code</label>
-          <input id="code" ${combine(
-            stimulusTarget('form-validator', 'input'),
-            stimulusAction('form-validator', 'validate', 'input'),
+          <input id="code" ${attr.combine(
+            attr.target('form-validator', 'input'),
+            attr.action('form-validator', 'validate', 'input'),
           )} />
-          <p ${stimulusTarget('form-validator', 'error')}></p>
+          <p ${attr.target('form-validator', 'error')}></p>
         </div>
       `,
     })
@@ -129,13 +126,13 @@ describe('FormValidatorController', () => {
     const { user, element, getByLabelText } = await render(FormValidatorController, {
       identifier: 'form-validator',
       html: `
-        <div ${stimulusController('form-validator', { pattern: '^\\d{3}$' })}>
+        <div ${attr.controller('form-validator', { pattern: '^\\d{3}$' })}>
           <label for="code">Code</label>
-          <input id="code" ${combine(
-            stimulusTarget('form-validator', 'input'),
-            stimulusAction('form-validator', 'validate', 'input'),
+          <input id="code" ${attr.combine(
+            attr.target('form-validator', 'input'),
+            attr.action('form-validator', 'validate', 'input'),
           )} />
-          <p ${stimulusTarget('form-validator', 'error')}>start</p>
+          <p ${attr.target('form-validator', 'error')}>start</p>
         </div>
       `,
     })
@@ -151,12 +148,12 @@ describe('ToggleController', () => {
   it('toggles hidden attribute and CSS class', async () => {
     const { user, getByRole, element } = await render(ToggleController, {
       html: `
-        <div ${combine(stimulusController('toggle', {}, { open: 'is-open' }))}>
-          <button ${combine(
-            stimulusTarget('toggle', 'trigger'),
-            stimulusAction('toggle', 'toggle', 'click'),
+        <div ${attr.combine(attr.controller('toggle', {}, { open: 'is-open' }))}>
+          <button ${attr.combine(
+            attr.target('toggle', 'trigger'),
+            attr.action('toggle', 'toggle', 'click'),
           )} aria-expanded="false">Menu</button>
-          <div ${stimulusTarget('toggle', 'content')} hidden>Hidden content</div>
+          <div ${attr.target('toggle', 'content')} hidden>Hidden content</div>
         </div>
       `,
     })
@@ -189,11 +186,11 @@ describe('SearchController (async fetch)', () => {
 
     const { user, waitFor, getByRole, findByTestId } = await render(SearchController, {
       html: `
-        <div ${stimulusController('search', { url: '/api/search' })}>
-          <input ${stimulusTarget('search', 'query')} aria-label="query" />
-          <button ${stimulusAction('search', 'submit', 'click')}>Search</button>
-          <p ${stimulusTarget('search', 'status')}></p>
-          <ul ${stimulusTarget('search', 'results')}></ul>
+        <div ${attr.controller('search', { url: '/api/search' })}>
+          <input ${attr.target('search', 'query')} aria-label="query" />
+          <button ${attr.action('search', 'submit', 'click')}>Search</button>
+          <p ${attr.target('search', 'status')}></p>
+          <ul ${attr.target('search', 'results')}></ul>
         </div>
       `,
     })
@@ -214,11 +211,11 @@ describe('SearchController (async fetch)', () => {
 
     const { user, waitFor, element, getByRole } = await render(SearchController, {
       html: `
-        <div ${stimulusController('search', { url: '/api/search' })}>
-          <input ${stimulusTarget('search', 'query')} aria-label="q" />
-          <button ${stimulusAction('search', 'submit', 'click')}>Go</button>
-          <p ${stimulusTarget('search', 'status')}></p>
-          <ul ${stimulusTarget('search', 'results')}></ul>
+        <div ${attr.controller('search', { url: '/api/search' })}>
+          <input ${attr.target('search', 'query')} aria-label="q" />
+          <button ${attr.action('search', 'submit', 'click')}>Go</button>
+          <p ${attr.target('search', 'status')}></p>
+          <ul ${attr.target('search', 'results')}></ul>
         </div>
       `,
     })
@@ -239,13 +236,13 @@ describe('Modal + Dialog outlets', () => {
       controllers: { dialog: DialogController },
       html: `
         <div>
-          <div ${combine(
-            stimulusController('modal', {}, {}, { dialog: "[data-controller~='dialog']" }),
+          <div ${attr.combine(
+            attr.controller('modal', {}, {}, { dialog: "[data-controller~='dialog']" }),
           )}>
-            <button ${stimulusAction('modal', 'open', 'click')}>Open</button>
-            <button ${stimulusAction('modal', 'close', 'click')}>Close</button>
+            <button ${attr.action('modal', 'open', 'click')}>Open</button>
+            <button ${attr.action('modal', 'close', 'click')}>Close</button>
           </div>
-          <section ${stimulusController('dialog')} hidden>Dialog body</section>
+          <section ${attr.controller('dialog')} hidden>Dialog body</section>
         </div>
       `,
     })
@@ -266,13 +263,13 @@ describe('TabsController', () => {
   it('switches active tab / panel on click', async () => {
     const { element, user, getByRole } = await render(TabsController, {
       html: `
-        <div ${combine(stimulusController('tabs', { activeIndex: 0 }, { active: 'is-active' }))}>
+        <div ${attr.combine(attr.controller('tabs', { activeIndex: 0 }, { active: 'is-active' }))}>
           <div role="tablist">
-            <button ${combine(stimulusTarget('tabs', 'tab'), stimulusAction('tabs', 'select', 'click'))} role="tab">One</button>
-            <button ${combine(stimulusTarget('tabs', 'tab'), stimulusAction('tabs', 'select', 'click'))} role="tab">Two</button>
+            <button ${attr.combine(attr.target('tabs', 'tab'), attr.action('tabs', 'select', 'click'))} role="tab">One</button>
+            <button ${attr.combine(attr.target('tabs', 'tab'), attr.action('tabs', 'select', 'click'))} role="tab">Two</button>
           </div>
-          <section ${stimulusTarget('tabs', 'panel')}>First</section>
-          <section ${stimulusTarget('tabs', 'panel')}>Second</section>
+          <section ${attr.target('tabs', 'panel')}>First</section>
+          <section ${attr.target('tabs', 'panel')}>Second</section>
         </div>
       `,
     })
@@ -298,12 +295,12 @@ describe('KeyboardController', () => {
   it('handles Enter and Escape via keydown actions', async () => {
     const { element, user } = await render(KeyboardController, {
       html: `
-        <div ${combine(
-          stimulusController('keyboard'),
-          stimulusAction('keyboard', 'onEnter', 'keydown.enter'),
-          stimulusAction('keyboard', 'onEscape', 'keydown.esc'),
+        <div ${attr.combine(
+          attr.controller('keyboard'),
+          attr.action('keyboard', 'onEnter', 'keydown.enter'),
+          attr.action('keyboard', 'onEscape', 'keydown.esc'),
         )} tabindex="0">
-          <span ${stimulusTarget('keyboard', 'status')}>idle</span>
+          <span ${attr.target('keyboard', 'status')}>idle</span>
         </div>
       `,
     })
@@ -331,11 +328,11 @@ describe('fireEvent escape hatch', () => {
     const { element } = await render(PingController, {
       identifier: 'ping',
       html: `
-        <div ${combine(
-          stimulusController('ping'),
-          stimulusAction('ping', 'onPing', 'custom:ping'),
+        <div ${attr.combine(
+          attr.controller('ping'),
+          attr.action('ping', 'onPing', 'custom:ping'),
         )}>
-          <span ${stimulusTarget('ping', 'out')}></span>
+          <span ${attr.target('ping', 'out')}></span>
         </div>
       `,
     })

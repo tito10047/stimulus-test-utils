@@ -45,22 +45,17 @@ export default class extends Controller {
 Here is a complete test:
 
 ```js
-import {
-  render,
-  stimulusController,
-  stimulusTarget,
-  stimulusAction,
-} from '@tito10047/stimulus-test-utils'
+import { render, attr } from '@tito10047/stimulus-test-utils'
 import { expect, test } from 'vitest'
 import HelloController from './hello_controller.js'
 
 test('greets by name', async () => {
   const { element, controller, user, getByRole } = await render(HelloController, {
     html: `
-      <div ${stimulusController('hello', { greeting: 'Hi' })}>
-        <input ${stimulusTarget('hello', 'name')} />
-        <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-        <span ${stimulusTarget('hello', 'output')}></span>
+      <div ${attr.controller('hello', { greeting: 'Hi' })}>
+        <input ${attr.target('hello', 'name')} />
+        <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+        <span ${attr.target('hello', 'output')}></span>
       </div>
     `,
   })
@@ -74,7 +69,7 @@ test('greets by name', async () => {
 
 No `Application.start()`. No `document.body.innerHTML = …`. No manual `await nextTick()`. That is the entire story.
 
-The `stimulus*` helpers are optional — plain `data-*` attributes work equally well. They exist purely to keep fixtures refactor‑safe and free of typos. See [HTML attribute helpers](#html-attribute-helpers) below.
+The `attr` helpers are optional — plain `data-*` attributes work equally well. They exist purely to keep fixtures refactor‑safe and free of typos. See [HTML attribute helpers](#html-attribute-helpers) below.
 
 ---
 
@@ -122,12 +117,7 @@ Mounts `options.html` into the DOM, starts a Stimulus `Application`, registers t
 Writing Stimulus fixtures as raw strings is error‑prone: a typo in `data-hello-greeting-value` silently becomes *undefined* at runtime and your test fails with a confusing message. The package ships tiny, dependency‑free helpers that return ready‑to‑interpolate attribute specs — so your fixtures stay readable *and* refactor‑safe.
 
 ```ts
-import {
-  stimulusController,
-  stimulusTarget,
-  stimulusAction,
-  combine,
-} from '@tito10047/stimulus-test-utils'
+import { attr } from '@tito10047/stimulus-test-utils'
 ```
 
 ### `AttrSpec` — return type of every helper
@@ -135,11 +125,11 @@ import {
 Every helper returns an **`AttrSpec`** object, not a raw `string`. `AttrSpec` implements `Symbol.toPrimitive` / `toString()` / `toJSON()`, so it serializes transparently inside template literals:
 
 ```ts
-`<div ${stimulusController('hello')}>`
+`<div ${attr.controller('hello')}>`
 // => '<div data-controller="hello">'
 ```
 
-You never need to call `.toString()` manually — JavaScript does it for you whenever an `AttrSpec` is interpolated into a string. The reason helpers return an object (not a plain string) is **composition**: `combine()` merges multiple specs by reading their structured data, not by parsing strings — no brittle regex, no HTML‑escape footguns.
+You never need to call `.toString()` manually — JavaScript does it for you whenever an `AttrSpec` is interpolated into a string. The reason helpers return an object (not a plain string) is **composition**: `attr.combine()` merges multiple specs by reading their structured data, not by parsing strings — no brittle regex, no HTML‑escape footguns.
 
 ```ts
 interface AttrSpec {
@@ -151,31 +141,31 @@ interface AttrSpec {
 
 > **Note:** `typeof spec === 'object'`, not `'string'`. If you need a plain string (e.g. to pass to a non‑template‑literal API), call `String(spec)` or `` `${spec}` ``.
 
-### `stimulusController(identifier, values?, classes?, outlets?)`
+### `attr.controller(identifier, values?, classes?, outlets?)`
 
 Produces the `data-controller` attribute plus every `data-<identifier>-*-value`, `data-<identifier>-*-class`, and `data-<identifier>-*-outlet` attribute in one call.
 
 ```ts
-stimulusController('hello')
+attr.controller('hello')
 // => 'data-controller="hello"'
 
-stimulusController('hello', { greeting: 'Hi', count: 3, active: true })
+attr.controller('hello', { greeting: 'Hi', count: 3, active: true })
 // => 'data-controller="hello" data-hello-greeting-value="Hi" data-hello-count-value="3" data-hello-active-value="true"'
 
-stimulusController('hello', { user: { name: 'Ada' } })
+attr.controller('hello', { user: { name: 'Ada' } })
 // => 'data-controller="hello" data-hello-user-value="{&quot;name&quot;:&quot;Ada&quot;}"'
 
-stimulusController('modal', {}, { open: 'is-open', closed: 'is-closed' })
+attr.controller('modal', {}, { open: 'is-open', closed: 'is-closed' })
 // => 'data-controller="modal" data-modal-open-class="is-open" data-modal-closed-class="is-closed"'
 
-stimulusController('modal', {}, {}, { dialog: "[data-controller~='dialog']" })
+attr.controller('modal', {}, {}, { dialog: "[data-controller~='dialog']" })
 // => 'data-controller="modal" data-modal-dialog-outlet="[data-controller~=&#39;dialog&#39;]"'
 ```
 
 Signature:
 
 ```ts
-function stimulusController(
+function controller(
   identifier: string,
   values?: Record<string, string | number | boolean | object | null>,
   classes?: Record<string, string>,
@@ -187,48 +177,48 @@ function stimulusController(
 - Non‑string values are `JSON.stringify`‑ed, matching Stimulus' value‑type coercion rules (`Number`, `Boolean`, `Object`, `Array`).
 - All attribute values are HTML‑escaped so quotes and `<`/`>` in your data can never break the fixture.
 
-To attach **multiple** controllers to the same element, use [`combine()`](#combinespecs--merge-multiple-attrspecs-onto-one-element) — do **not** pass an array here. A single `stimulusController` call always describes exactly one controller.
+To attach **multiple** controllers to the same element, use [`attr.combine()`](#attrcombinespecs--merge-multiple-attrspecs-onto-one-element) — do **not** pass an array here. A single `attr.controller` call always describes exactly one controller.
 
-### `stimulusTarget(identifier, ...names)`
+### `attr.target(identifier, ...names)`
 
 Produces `data-<identifier>-target="name1 name2 …"`.
 
 ```ts
-stimulusTarget('hello', 'name')
+attr.target('hello', 'name')
 // => 'data-hello-target="name"'
 
-stimulusTarget('hello', 'name', 'output')
+attr.target('hello', 'name', 'output')
 // => 'data-hello-target="name output"'
 ```
 
 Signature:
 
 ```ts
-function stimulusTarget(identifier: string, ...targetNames: string[]): AttrSpec
+function target(identifier: string, ...targetNames: string[]): AttrSpec
 ```
 
-### `stimulusAction(identifier, method, event?, options?)`
+### `attr.action(identifier, method, event?, options?)`
 
 Produces a single `data-action` descriptor. If the element already has other actions, concatenate the returned string inside one `data-action="…"` attribute, or use multiple calls separated by a space:
 
 ```ts
-stimulusAction('hello', 'greet')
+attr.action('hello', 'greet')
 // => 'data-action="hello#greet"'            (default event for the element type)
 
-stimulusAction('hello', 'greet', 'click')
+attr.action('hello', 'greet', 'click')
 // => 'data-action="click->hello#greet"'
 
-stimulusAction('hello', 'submit', 'submit', { prevent: true, stop: true })
+attr.action('hello', 'submit', 'submit', { prevent: true, stop: true })
 // => 'data-action="submit->hello#submit:prevent:stop"'
 
-stimulusAction('hello', 'onKey', 'keydown.enter')
+attr.action('hello', 'onKey', 'keydown.enter')
 // => 'data-action="keydown.enter->hello#onKey"'
 ```
 
 Signature:
 
 ```ts
-function stimulusAction(
+function action(
   identifier: string,
   method: string,
   event?: string,                                       // e.g. 'click', 'keydown.enter'
@@ -236,51 +226,46 @@ function stimulusAction(
 ): AttrSpec
 ```
 
-To attach **multiple** actions to the same element, wrap them with [`combine()`](#combinespecs--merge-multiple-attrspecs-onto-one-element). `combine` merges every `data-action` descriptor into a single attribute automatically:
+To attach **multiple** actions to the same element, wrap them with [`attr.combine()`](#attrcombinespecs--merge-multiple-attrspecs-onto-one-element). `attr.combine` merges every `data-action` descriptor into a single attribute automatically:
 
 ```ts
-import { combine, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { attr } from '@tito10047/stimulus-test-utils'
 
-combine(
-  stimulusAction('hello', 'greet', 'click'),
-  stimulusAction('hello', 'reset', 'dblclick'),
+attr.combine(
+  attr.action('hello', 'greet', 'click'),
+  attr.action('hello', 'reset', 'dblclick'),
 )
 // => 'data-action="click->hello#greet dblclick->hello#reset"'
 ```
 
-### `combine(...specs)` — merge multiple `AttrSpec`s onto one element
+### `attr.combine(...specs)` — merge multiple `AttrSpec`s onto one element
 
-When a single DOM node needs **more than one** helper — two controllers, a controller + a target, multiple actions — wrap them with `combine()`. It merges the underlying structured data (not strings!) and emits a single, well‑formed set of HTML attributes.
+When a single DOM node needs **more than one** helper — two controllers, a controller + a target, multiple actions — wrap them with `attr.combine()`. It merges the underlying structured data (not strings!) and emits a single, well‑formed set of HTML attributes.
 
 ```ts
-import {
-  combine,
-  stimulusController,
-  stimulusTarget,
-  stimulusAction,
-} from '@tito10047/stimulus-test-utils'
+import { attr } from '@tito10047/stimulus-test-utils'
 
 // Two controllers on one element — data-controller tokens are merged:
-`<div ${combine(
-  stimulusController('hello', { greeting: 'Hi' }),
-  stimulusController('tooltip', { text: 'Hey' }),
+`<div ${attr.combine(
+  attr.controller('hello', { greeting: 'Hi' }),
+  attr.controller('tooltip', { text: 'Hey' }),
 )}>`
 // => <div data-controller="hello tooltip"
 //         data-hello-greeting-value="Hi"
 //         data-tooltip-text-value="Hey">
 
 // Multiple actions on one button — data-action descriptors are merged:
-`<button ${combine(
-  stimulusAction('hello', 'greet', 'click'),
-  stimulusAction('hello', 'reset', 'dblclick'),
+`<button ${attr.combine(
+  attr.action('hello', 'greet', 'click'),
+  attr.action('hello', 'reset', 'dblclick'),
 )}>Greet</button>`
 // => <button data-action="click->hello#greet dblclick->hello#reset">
 
 // Mixed: controller + target + action on the same node:
-`<div ${combine(
-  stimulusController('modal'),
-  stimulusTarget('parent', 'slot'),
-  stimulusAction('modal', 'open', 'click'),
+`<div ${attr.combine(
+  attr.controller('modal'),
+  attr.target('parent', 'slot'),
+  attr.action('modal', 'open', 'click'),
 )}>`
 // => <div data-controller="modal"
 //         data-parent-target="slot"
@@ -295,11 +280,11 @@ function combine(...specs: AttrSpec[]): AttrSpec
 
 Key semantics:
 
-- **Returns an `AttrSpec`**, so `combine(a, combine(b, c))` is valid and flattens.
-- **`data-controller`** tokens from every `stimulusController` spec are concatenated (space‑separated, de‑duplicated).
-- **`data-action`** descriptors from every `stimulusAction` spec are concatenated into a single attribute.
+- **Returns an `AttrSpec`**, so `attr.combine(a, attr.combine(b, c))` is valid and flattens.
+- **`data-controller`** tokens from every `attr.controller` spec are concatenated (space‑separated, de‑duplicated).
+- **`data-action`** descriptors from every `attr.action` spec are concatenated into a single attribute.
 - **Values / classes / outlets / targets** carry their identifier prefix, so they never collide across controllers.
-- **Duplicate identifiers throw at call time.** Passing the same identifier twice — e.g. `combine(stimulusController('hello'), stimulusController('hello', { foo: 1 }))` — throws `Error: combine(): duplicate Stimulus controller identifier "hello". Declare each controller once and pass all its values/classes/outlets in a single stimulusController() call.` This prevents accidentally "merging" values from two conflicting declarations and matches how Stimulus itself treats duplicate identifiers on one element.
+- **Duplicate identifiers throw at call time.** Passing the same identifier twice — e.g. `attr.combine(attr.controller('hello'), attr.controller('hello', { foo: 1 }))` — throws `Error: combine(): duplicate Stimulus controller identifier "hello". Declare each controller once and pass all its values/classes/outlets in a single stimulusController() call.` This prevents accidentally "merging" values from two conflicting declarations and matches how Stimulus itself treats duplicate identifiers on one element.
 
 Ordering is preserved: the first spec's tokens appear first in `data-controller` / `data-action`, which can matter for Stimulus action dispatch order.
 
@@ -311,7 +296,7 @@ You absolutely can — nothing in `render()` requires the helpers. They exist be
 - **Refactoring the identifier** (`hello` → `greeting`) becomes a one‑line change.
 - **Value serialization** (objects, booleans) is done for you with the same rules Stimulus itself uses.
 - **HTML escaping** is automatic, so you can safely drop `"`, `<`, `&` into values.
-- **Composition is a real merge**, not string concatenation — see [`combine()`](#combinespecs--merge-multiple-attrspecs-onto-one-element) above.
+- **Composition is a real merge**, not string concatenation — see [`attr.combine()`](#attrcombinespecs--merge-multiple-attrspecs-onto-one-element) above.
 
 ---
 
@@ -507,16 +492,16 @@ Stimulus controllers living under sub-folders (Symfony UX / Asset Mapper convent
 ./assets/controllers/Users/List_controller.js         → "users--list"
 ```
 
-Every `stimulus*` helper — plus `render(options.identifier)` — **auto-normalizes** any of these inputs:
+Every `attr` helper — plus `render(options.identifier)` — **auto-normalizes** any of these inputs:
 
 ```ts
-stimulusController('MyApp/MyController', { greeting: 'Hi' })
+attr.controller('MyApp/MyController', { greeting: 'Hi' })
 // => data-controller="myapp--mycontroller" data-myapp--mycontroller-greeting-value="Hi"
 
-stimulusController('./assets/controllers/MyApp/Hello_controller.js')
+attr.controller('./assets/controllers/MyApp/Hello_controller.js')
 // => data-controller="myapp--hello"
 
-stimulusController('myapp--mycontroller')   // already canonical → untouched
+attr.controller('myapp--mycontroller')   // already canonical → untouched
 ```
 
 Rules:

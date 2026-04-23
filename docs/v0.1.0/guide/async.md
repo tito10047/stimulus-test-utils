@@ -38,7 +38,7 @@ await user.click(getByRole('button', { name: 'Search' }))
 const row = await findByTestId('result-1')
 ```
 
-`findBy*` uses the same default 1 s timeout as `waitFor`. For a custom timeout, combine it with `waitFor` or `Promise.race`.
+`findBy*` uses the same default 1 s timeout as `waitFor`. For a custom timeout, attr.combine it with `waitFor` or `Promise.race`.
 
 ## `nextTick()`
 

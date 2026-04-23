@@ -66,17 +66,17 @@ export default class extends Controller {
 `tests/hello.test.js`:
 
 ```js
-import { render, stimulusController, stimulusTarget, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.target, attr.action } from '@tito10047/stimulus-test-utils'
 import { expect, test } from 'vitest'
 import HelloController from '../src/hello_controller.js'
 
 test('greets by name', async () => {
   const { controller, user, element, getByRole } = await render(HelloController, {
     html: `
-      <div ${stimulusController('hello', { greeting: 'Hi' })}>
-        <input ${stimulusTarget('hello', 'name')} />
-        <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-        <span ${stimulusTarget('hello', 'output')}></span>
+      <div ${attr.controller('hello', { greeting: 'Hi' })}>
+        <input ${attr.target('hello', 'name')} />
+        <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+        <span ${attr.target('hello', 'output')}></span>
       </div>
     `,
   })

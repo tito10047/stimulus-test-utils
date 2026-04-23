@@ -64,22 +64,17 @@ export default class extends Controller {
 Test:
 
 ```js
-import {
-  render,
-  stimulusController,
-  stimulusTarget,
-  stimulusAction,
-} from '@tito10047/stimulus-test-utils'
+import { render, attr } from '@tito10047/stimulus-test-utils'
 import { expect, test } from 'vitest'
 import HelloController from './hello_controller.js'
 
 test('greets by name', async () => {
   const { element, controller, user, getByRole } = await render(HelloController, {
     html: `
-      <div ${stimulusController('hello', { greeting: 'Hi' })}>
-        <input ${stimulusTarget('hello', 'name')} />
-        <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-        <span ${stimulusTarget('hello', 'output')}></span>
+      <div ${attr.controller('hello', { greeting: 'Hi' })}>
+        <input ${attr.target('hello', 'name')} />
+        <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+        <span ${attr.target('hello', 'output')}></span>
       </div>
     `,
   })
@@ -99,7 +94,7 @@ No `Application.start()`, no `document.body.innerHTML = …`, no manual `await n
 - **Query helpers** — `getByRole`, `getByText`, `getByTestId`, `findBy*`, `queryBy*`, `getAllBy*` scoped to the mounted root.
 - **`user`** — user‑event simulations: `click`, `type`, `keyboard`, `hover`, …
 - **`waitFor` / `nextTick`** — async assertions for reactive DOM changes.
-- **Attribute helpers** — `stimulusController`, `stimulusTarget`, `stimulusAction`, `combine` produce safe, typo‑free `data-*` attributes.
+- **Attribute helpers** — `attr.controller`, `attr.target`, `attr.action`, `attr.combine` produce safe, typo‑free `data-*` attributes.
 - **`cleanup()`** — automatically stops the `Application` and removes the fixture (via the `/register` setup, or called manually).
 
 A complete API overview is available in [`public_api.md`](./public_api.md) and on the documentation site (see [Documentation](#documentation) below).

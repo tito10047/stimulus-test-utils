@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { render, stimulusController, stimulusTarget, stimulusAction } from '../src/index.js'
+import { render, attr } from '../src/index.js'
 import { HelloController, CounterController } from './fixtures/controllers.js'
 
 describe('render() — smoke', () => {
@@ -21,10 +21,10 @@ describe('render() — smoke', () => {
   it('executes actions end-to-end (60-second example)', async () => {
     const { element, controller, user, getByRole } = await render(HelloController, {
       html: `
-        <div ${stimulusController('hello', { greeting: 'Hi' })}>
-          <input ${stimulusTarget('hello', 'name')} />
-          <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-          <span ${stimulusTarget('hello', 'output')}></span>
+        <div ${attr.controller('hello', { greeting: 'Hi' })}>
+          <input ${attr.target('hello', 'name')} />
+          <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+          <span ${attr.target('hello', 'output')}></span>
         </div>
       `,
     })

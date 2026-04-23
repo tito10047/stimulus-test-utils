@@ -36,3 +36,9 @@ Thumbs.db
 docs/.vitepress/cache/
 docs/.vitepress/dist/
 docs/api/generated/
+
+# Packaging artifacts
+*.tgz
+
+# Local publish notes
+publish.md

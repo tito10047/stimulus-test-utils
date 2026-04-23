@@ -69,16 +69,16 @@ const dialog = within(element.parentElement!).getByTestId('dialog')
 ### Using the attribute helpers
 
 ```ts
-import { stimulusController, combine } from '@tito10047/stimulus-test-utils'
+import { attr.controller, attr.combine } from '@tito10047/stimulus-test-utils'
 
 await render(ModalController, {
   controllers: { dialog: DialogController },
   html: `
     <div>
-      <div ${stimulusController('modal', {}, {}, { dialog: "[data-controller~='dialog']" })}>
-        <button ${stimulusAction('modal', 'open', 'click')}>Open</button>
+      <div ${attr.controller('modal', {}, {}, { dialog: "[data-controller~='dialog']" })}>
+        <button ${attr.action('modal', 'open', 'click')}>Open</button>
       </div>
-      <section ${stimulusController('dialog')} hidden>Dialog body</section>
+      <section ${attr.controller('dialog')} hidden>Dialog body</section>
     </div>
   `,
 })
@@ -86,17 +86,17 @@ await render(ModalController, {
 
 ## Two controllers on one element
 
-When a single element has multiple controllers (e.g. `toggle` + `analytics`), use `combine()` to merge their attributes:
+When a single element has multiple controllers (e.g. `toggle` + `analytics`), use `attr.combine()` to merge their attributes:
 
 ```ts
-import { combine, stimulusController } from '@tito10047/stimulus-test-utils'
+import { attr.combine, attr.controller } from '@tito10047/stimulus-test-utils'
 
 await render(ToggleController, {
   controllers: { analytics: AnalyticsController },
   html: `
-    <button ${combine(
-      stimulusController('toggle', {}, { open: 'is-open' }),
-      stimulusController('analytics', { eventName: 'toggle-click' }),
+    <button ${attr.combine(
+      attr.controller('toggle', {}, { open: 'is-open' }),
+      attr.controller('analytics', { eventName: 'toggle-click' }),
     )}>
       Menu
     </button>
@@ -104,7 +104,7 @@ await render(ToggleController, {
 })
 ```
 
-`combine()` merges `data-controller` tokens into one attribute and keeps per-controller values namespaced by their identifier. See [Attribute helpers](./attribute-helpers.md#combine) for the full rules.
+`attr.combine()` merges `data-controller` tokens into one attribute and keeps per-controller values namespaced by their identifier. See [Attribute helpers](./attribute-helpers.md#attr.combine) for the full rules.
 
 ## Nested controllers
 

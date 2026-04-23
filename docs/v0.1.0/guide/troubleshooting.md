@@ -28,7 +28,7 @@ TypeError: Cannot read properties of undefined (reading 'textContent')
 **Causes & fixes**
 
 1. The `static values` declaration in the controller does not include the key. Values must be declared on the controller class for Stimulus to pick them up.
-2. The attribute name has a typo. Use `stimulusController('hello', { greeting: 'Hi' })` to generate the correct name.
+2. The attribute name has a typo. Use `attr.controller('hello', { greeting: 'Hi' })` to generate the correct name.
 3. The identifier in the attribute does not match the controller's identifier. A fixture with `data-controller="hello"` needs `data-hello-…`, not `data-Hello-…` — Stimulus is case-sensitive.
 
 ## "`connect()` never fires" / "Stimulus doesn't see the element"
@@ -83,19 +83,19 @@ declare readonly xxxTarget: HTMLElement
 
 See [TypeScript](./typescript.md) for the full pattern.
 
-## "Error: duplicate Stimulus controller identifier "hello" inside `combine()`"
+## "Error: duplicate Stimulus controller identifier "hello" inside `attr.combine()`"
 
-You passed the same identifier to two `stimulusController()` calls. Collapse them into one call and merge the `values` / `classes` / `outlets` objects:
+You passed the same identifier to two `attr.controller()` calls. Collapse them into one call and merge the `values` / `classes` / `outlets` objects:
 
 ```ts
 // Wrong
-combine(
-  stimulusController('hello', { a: 1 }),
-  stimulusController('hello', { b: 2 }),
+attr.combine(
+  attr.controller('hello', { a: 1 }),
+  attr.controller('hello', { b: 2 }),
 )
 
 // Right
-stimulusController('hello', { a: 1, b: 2 })
+attr.controller('hello', { a: 1, b: 2 })
 ```
 
 ## "happy-dom throws `Not implemented: HTMLCanvasElement.getContext`" (or similar)

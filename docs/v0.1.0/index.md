@@ -28,23 +28,23 @@ features:
   - title: Real user events
     details: "Built on user-event semantics: <code>type</code> fires input + change per character, <code>keyboard</code> speaks the full key grammar, every action awaits Stimulus' MutationObserver."
   - title: Refactor-safe fixtures
-    details: "Optional <code>stimulusController()</code> / <code>stimulusTarget()</code> / <code>stimulusAction()</code> helpers generate <code>data-*</code> attributes without typos."
+    details: "Optional <code>attr.controller()</code> / <code>attr.target()</code> / <code>attr.action()</code> helpers generate <code>data-*</code> attributes without typos."
 ---
 
 ## A complete test, start to finish
 
 ```ts
-import { render, stimulusController, stimulusTarget, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.target, attr.action } from '@tito10047/stimulus-test-utils'
 import { expect, test } from 'vitest'
 import HelloController from './hello_controller.js'
 
 test('greets by name', async () => {
   const { controller, user, element, getByRole } = await render(HelloController, {
     html: `
-      <div ${stimulusController('hello', { greeting: 'Hi' })}>
-        <input ${stimulusTarget('hello', 'name')} />
-        <button ${stimulusAction('hello', 'greet', 'click')}>Greet</button>
-        <span ${stimulusTarget('hello', 'output')}></span>
+      <div ${attr.controller('hello', { greeting: 'Hi' })}>
+        <input ${attr.target('hello', 'name')} />
+        <button ${attr.action('hello', 'greet', 'click')}>Greet</button>
+        <span ${attr.target('hello', 'output')}></span>
       </div>
     `,
   })

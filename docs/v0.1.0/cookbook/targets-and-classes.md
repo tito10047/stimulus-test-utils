@@ -49,7 +49,7 @@ static classes = ['open']
 
 ```ts
 await render(ToggleController, {
-  html: `<div ${stimulusController('toggle', {}, { open: 'is-open' })}></div>`,
+  html: `<div ${attr.controller('toggle', {}, { open: 'is-open' })}></div>`,
 })
 ```
 
@@ -58,12 +58,12 @@ Assert class toggling by inspecting the DOM, not the controller internals:
 ```ts
 const { controller, user, element, getByRole } = await render(ToggleController, {
   html: `
-    <div ${combine(stimulusController('toggle', {}, { open: 'is-open' }))}>
-      <button ${combine(
-        stimulusTarget('toggle', 'trigger'),
-        stimulusAction('toggle', 'toggle', 'click'),
+    <div ${attr.combine(attr.controller('toggle', {}, { open: 'is-open' }))}>
+      <button ${attr.combine(
+        attr.target('toggle', 'trigger'),
+        attr.action('toggle', 'toggle', 'click'),
       )}>Menu</button>
-      <div ${stimulusTarget('toggle', 'content')} hidden>Hidden</div>
+      <div ${attr.target('toggle', 'content')} hidden>Hidden</div>
     </div>
   `,
 })

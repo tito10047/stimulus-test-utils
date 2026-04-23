@@ -6,7 +6,7 @@ Controllers that call `fetch` should always be tested against a stubbed global s
 
 ```ts
 import { vi } from 'vitest'
-import { render, stimulusController, stimulusTarget, stimulusAction } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.target, attr.action } from '@tito10047/stimulus-test-utils'
 import SearchController from '../src/search_controller.js'
 
 test('renders results from a mocked fetch', async () => {
@@ -19,10 +19,10 @@ test('renders results from a mocked fetch', async () => {
 
   const { user, findByTestId, getByRole } = await render(SearchController, {
     html: `
-      <div ${stimulusController('search', { url: '/api/search' })}>
-        <input ${stimulusTarget('search', 'query')} aria-label="query" />
-        <button ${stimulusAction('search', 'submit', 'click')}>Search</button>
-        <ul ${stimulusTarget('search', 'results')}></ul>
+      <div ${attr.controller('search', { url: '/api/search' })}>
+        <input ${attr.target('search', 'query')} aria-label="query" />
+        <button ${attr.action('search', 'submit', 'click')}>Search</button>
+        <ul ${attr.target('search', 'results')}></ul>
       </div>
     `,
   })

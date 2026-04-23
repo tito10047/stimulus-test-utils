@@ -12,10 +12,10 @@ test('debounces input', async () => {
   try {
     const { controller, user, getByRole } = await render(DebounceController, {
       html: `
-        <div ${stimulusController('debounce', { delay: 300 })}>
-          <input ${combine(
-            stimulusTarget('debounce', 'input'),
-            stimulusAction('debounce', 'onInput', 'input'),
+        <div ${attr.controller('debounce', { delay: 300 })}>
+          <input ${attr.combine(
+            attr.target('debounce', 'input'),
+            attr.action('debounce', 'onInput', 'input'),
           )} aria-label="q" />
         </div>
       `,
@@ -42,7 +42,7 @@ test('debounces input', async () => {
 ```ts
 vi.useFakeTimers()
 const { controller } = await render(TickerController, {
-  html: `<div ${stimulusController('ticker', { intervalMs: 1000 })}></div>`,
+  html: `<div ${attr.controller('ticker', { intervalMs: 1000 })}></div>`,
 })
 
 await vi.advanceTimersByTimeAsync(3000)

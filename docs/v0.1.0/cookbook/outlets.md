@@ -3,7 +3,7 @@
 Outlets let one controller reference another via a CSS selector. Testing them is a matter of registering both controllers, mounting both DOM nodes, and asserting through the outlet interface.
 
 ```ts
-import { render, stimulusController, stimulusAction, combine } from '@tito10047/stimulus-test-utils'
+import { render, attr.controller, attr.action, attr.combine } from '@tito10047/stimulus-test-utils'
 import ModalController from '../src/modal_controller.js'
 import DialogController from '../src/dialog_controller.js'
 
@@ -11,11 +11,11 @@ const { controller, user, element, getByRole } = await render(ModalController, {
   controllers: { dialog: DialogController },
   html: `
     <div>
-      <div ${combine(stimulusController('modal', {}, {}, { dialog: "[data-controller~='dialog']" }))}>
-        <button ${stimulusAction('modal', 'open', 'click')}>Open</button>
-        <button ${stimulusAction('modal', 'close', 'click')}>Close</button>
+      <div ${attr.combine(attr.controller('modal', {}, {}, { dialog: "[data-controller~='dialog']" }))}>
+        <button ${attr.action('modal', 'open', 'click')}>Open</button>
+        <button ${attr.action('modal', 'close', 'click')}>Close</button>
       </div>
-      <section ${stimulusController('dialog')} hidden>Dialog body</section>
+      <section ${attr.controller('dialog')} hidden>Dialog body</section>
     </div>
   `,
 })

@@ -24,7 +24,7 @@ expect(controller.countValue).toBe(0)
 
 ```ts
 const { controller } = await render(CounterController, {
-  html: `<div ${stimulusController('counter', { count: 42 })}></div>`,
+  html: `<div ${attr.controller('counter', { count: 42 })}></div>`,
 })
 
 expect(controller.countValue).toBe(42)
@@ -32,11 +32,11 @@ expect(controller.countValue).toBe(42)
 
 ## Object and array values
 
-Non-scalar values are JSON-serialized by the `stimulusController` helper, matching Stimulus' own semantics:
+Non-scalar values are JSON-serialized by the `attr.controller` helper, matching Stimulus' own semantics:
 
 ```ts
 const { controller } = await render(UserCardController, {
-  html: `<div ${stimulusController('user-card', {
+  html: `<div ${attr.controller('user-card', {
     user: { name: 'Ada', age: 36 },
     tags: ['a', 'b'],
   })}></div>`,

@@ -4,6 +4,7 @@ export { cleanup } from './cleanup.js'
 export { createUserEvent, fireEvent } from './user-event.js'
 export { waitFor, nextTick } from './wait-for.js'
 export {
+  attr,
   stimulusController,
   stimulusTarget,
   stimulusAction,
