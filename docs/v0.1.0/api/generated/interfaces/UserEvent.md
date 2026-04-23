@@ -1,6 +1,6 @@
 # Interface: UserEvent
 
-Defined in: [types.ts:19](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L19)
+Defined in: [types.ts:19](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L19)
 
 ## Methods
 
@@ -8,7 +8,7 @@ Defined in: [types.ts:19](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **clear**(`el`): `Promise`\<`void`\>
 
-Defined in: [types.ts:24](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L24)
+Defined in: [types.ts:24](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L24)
 
 #### Parameters
 
@@ -26,7 +26,7 @@ Defined in: [types.ts:24](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **click**(`el`): `Promise`\<`void`\>
 
-Defined in: [types.ts:20](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L20)
+Defined in: [types.ts:20](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L20)
 
 #### Parameters
 
@@ -44,7 +44,7 @@ Defined in: [types.ts:20](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **dblClick**(`el`): `Promise`\<`void`\>
 
-Defined in: [types.ts:21](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L21)
+Defined in: [types.ts:21](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L21)
 
 #### Parameters
 
@@ -62,7 +62,7 @@ Defined in: [types.ts:21](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **hover**(`el`): `Promise`\<`void`\>
 
-Defined in: [types.ts:22](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L22)
+Defined in: [types.ts:22](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L22)
 
 #### Parameters
 
@@ -80,7 +80,7 @@ Defined in: [types.ts:22](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **keyboard**(`keys`): `Promise`\<`void`\>
 
-Defined in: [types.ts:25](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L25)
+Defined in: [types.ts:25](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L25)
 
 #### Parameters
 
@@ -98,7 +98,7 @@ Defined in: [types.ts:25](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **selectOption**(`select`, `value`): `Promise`\<`void`\>
 
-Defined in: [types.ts:27](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L27)
+Defined in: [types.ts:27](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L27)
 
 #### Parameters
 
@@ -120,7 +120,7 @@ Defined in: [types.ts:27](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **submit**(`form`): `Promise`\<`void`\>
 
-Defined in: [types.ts:28](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L28)
+Defined in: [types.ts:28](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L28)
 
 #### Parameters
 
@@ -138,7 +138,7 @@ Defined in: [types.ts:28](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **tab**(`opts?`): `Promise`\<`void`\>
 
-Defined in: [types.ts:26](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L26)
+Defined in: [types.ts:26](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L26)
 
 #### Parameters
 
@@ -158,7 +158,7 @@ Defined in: [types.ts:26](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **type**(`el`, `text`): `Promise`\<`void`\>
 
-Defined in: [types.ts:23](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L23)
+Defined in: [types.ts:23](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L23)
 
 #### Parameters
 

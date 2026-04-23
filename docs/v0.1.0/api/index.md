@@ -1,15 +1,8 @@
 # API Reference
 
-This section is generated from the TSDoc comments in [`src/`](https://github.com/tito10047/stimulus-test-utils/tree/main/src) by [TypeDoc](https://typedoc.org) with the [Markdown plugin](https://github.com/tgreyuk/typedoc-plugin-markdown). It is the single source of truth for every type, signature and option.
+The full API documentation has been moved to a separate section.
 
-Run it locally:
-
-```bash
-npm run docs:api       # only regenerate the API pages
-npm run docs:dev       # run the full docs site (includes API)
-```
-
-The generated pages appear alongside this one (`docs/api/*.md`) and are automatically picked up by the sidebar.
+[**Go to Full API Reference →**](/api/generated/README)
 
 ## Public surface (at a glance)
 

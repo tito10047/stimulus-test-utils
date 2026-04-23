@@ -2,7 +2,7 @@
 
 > **escapeAttr**(`value`): `string`
 
-Defined in: [utils.ts:16](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/utils.ts#L16)
+Defined in: [utils.ts:16](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/utils.ts#L16)
 
 HTML-escape a value for safe placement inside a double-quoted attribute.
 We intentionally only escape `&` and `"` — `<` / `>` / `'` are valid

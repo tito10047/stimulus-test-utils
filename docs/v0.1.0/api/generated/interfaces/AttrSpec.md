@@ -1,6 +1,6 @@
 # Interface: AttrSpec
 
-Defined in: [attributes.ts:17](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L17)
+Defined in: [attributes.ts:17](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L17)
 
 ## Methods
 
@@ -8,7 +8,7 @@ Defined in: [attributes.ts:17](https://github.com/tito10047/stimulus-test-utils/
 
 > **\[toPrimitive\]**(`hint`): `string`
 
-Defined in: [attributes.ts:20](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L20)
+Defined in: [attributes.ts:20](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L20)
 
 #### Parameters
 
@@ -26,7 +26,7 @@ Defined in: [attributes.ts:20](https://github.com/tito10047/stimulus-test-utils/
 
 > **toJSON**(): `string`
 
-Defined in: [attributes.ts:19](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L19)
+Defined in: [attributes.ts:19](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L19)
 
 #### Returns
 
@@ -38,7 +38,7 @@ Defined in: [attributes.ts:19](https://github.com/tito10047/stimulus-test-utils/
 
 > **toString**(): `string`
 
-Defined in: [attributes.ts:18](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L18)
+Defined in: [attributes.ts:18](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L18)
 
 #### Returns
 

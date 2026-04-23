@@ -1,6 +1,6 @@
 # Interface: WaitForOptions
 
-Defined in: [types.ts:14](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L14)
+Defined in: [types.ts:14](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L14)
 
 ## Properties
 
@@ -8,7 +8,7 @@ Defined in: [types.ts:14](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > `optional` **interval?**: `number`
 
-Defined in: [types.ts:16](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L16)
+Defined in: [types.ts:16](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L16)
 
 ***
 
@@ -16,4 +16,4 @@ Defined in: [types.ts:16](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > `optional` **timeout?**: `number`
 
-Defined in: [types.ts:15](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L15)
+Defined in: [types.ts:15](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L15)

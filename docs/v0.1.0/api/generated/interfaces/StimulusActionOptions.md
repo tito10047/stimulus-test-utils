@@ -1,6 +1,6 @@
 # Interface: StimulusActionOptions
 
-Defined in: [attributes.ts:157](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L157)
+Defined in: [attributes.ts:157](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L157)
 
 ## Properties
 
@@ -8,7 +8,7 @@ Defined in: [attributes.ts:157](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **capture?**: `boolean`
 
-Defined in: [attributes.ts:162](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L162)
+Defined in: [attributes.ts:162](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L162)
 
 ***
 
@@ -16,7 +16,7 @@ Defined in: [attributes.ts:162](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **once?**: `boolean`
 
-Defined in: [attributes.ts:160](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L160)
+Defined in: [attributes.ts:160](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L160)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [attributes.ts:160](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **passive?**: `boolean`
 
-Defined in: [attributes.ts:161](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L161)
+Defined in: [attributes.ts:161](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L161)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [attributes.ts:161](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **prevent?**: `boolean`
 
-Defined in: [attributes.ts:158](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L158)
+Defined in: [attributes.ts:158](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L158)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [attributes.ts:158](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **self?**: `boolean`
 
-Defined in: [attributes.ts:163](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L163)
+Defined in: [attributes.ts:163](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L163)
 
 ***
 
@@ -48,4 +48,4 @@ Defined in: [attributes.ts:163](https://github.com/tito10047/stimulus-test-utils
 
 > `optional` **stop?**: `boolean`
 
-Defined in: [attributes.ts:159](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/attributes.ts#L159)
+Defined in: [attributes.ts:159](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/attributes.ts#L159)

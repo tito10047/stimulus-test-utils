@@ -26,7 +26,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/introduction' },
       { text: 'Cookbook', link: '/cookbook/' },
-      { text: 'API', link: '/api/' },
+      { text: 'API', link: '/api/generated/README' },
       {
         text: 'v0.1.0',
         items: [
@@ -102,7 +102,8 @@ export default defineConfig({
         {
           text: 'API Reference',
           items: [
-            { text: 'Overview', link: '/api/' },
+            { text: 'Overview', link: '/api/generated/README' },
+            { text: 'Global Namespace', link: '/api/generated/variables/attr' },
           ],
         },
       ],

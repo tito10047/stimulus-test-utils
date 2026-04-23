@@ -1,6 +1,6 @@
 # Interface: QueryHelpers
 
-Defined in: [types.ts:31](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L31)
+Defined in: [types.ts:31](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L31)
 
 ## Extended by
 
@@ -12,7 +12,7 @@ Defined in: [types.ts:31](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **findByLabelText**(`text`, `opts?`): `Promise`\<`HTMLElement`\>
 
-Defined in: [types.ts:49](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L49)
+Defined in: [types.ts:49](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L49)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [types.ts:49](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **findByRole**(`role`, `opts?`): `Promise`\<`HTMLElement`\>
 
-Defined in: [types.ts:39](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L39)
+Defined in: [types.ts:39](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L39)
 
 #### Parameters
 
@@ -56,7 +56,7 @@ Defined in: [types.ts:39](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **findByTestId**(`id`, `opts?`): `Promise`\<`HTMLElement`\>
 
-Defined in: [types.ts:34](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L34)
+Defined in: [types.ts:34](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L34)
 
 #### Parameters
 
@@ -78,7 +78,7 @@ Defined in: [types.ts:34](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **findByText**(`text`, `opts?`): `Promise`\<`HTMLElement`\>
 
-Defined in: [types.ts:44](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L44)
+Defined in: [types.ts:44](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L44)
 
 #### Parameters
 
@@ -100,7 +100,7 @@ Defined in: [types.ts:44](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getAllByRole**(`role`, `opts?`): `HTMLElement`[]
 
-Defined in: [types.ts:40](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L40)
+Defined in: [types.ts:40](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L40)
 
 #### Parameters
 
@@ -124,7 +124,7 @@ Defined in: [types.ts:40](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getAllByTestId**(`id`): `HTMLElement`[]
 
-Defined in: [types.ts:35](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L35)
+Defined in: [types.ts:35](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L35)
 
 #### Parameters
 
@@ -142,7 +142,7 @@ Defined in: [types.ts:35](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getAllByText**(`text`): `HTMLElement`[]
 
-Defined in: [types.ts:45](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L45)
+Defined in: [types.ts:45](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L45)
 
 #### Parameters
 
@@ -160,7 +160,7 @@ Defined in: [types.ts:45](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getByLabelText**(`text`): `HTMLElement`
 
-Defined in: [types.ts:47](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L47)
+Defined in: [types.ts:47](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L47)
 
 #### Parameters
 
@@ -178,7 +178,7 @@ Defined in: [types.ts:47](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getByRole**(`role`, `opts?`): `HTMLElement`
 
-Defined in: [types.ts:37](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L37)
+Defined in: [types.ts:37](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L37)
 
 #### Parameters
 
@@ -202,7 +202,7 @@ Defined in: [types.ts:37](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getByTestId**(`id`): `HTMLElement`
 
-Defined in: [types.ts:32](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L32)
+Defined in: [types.ts:32](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L32)
 
 #### Parameters
 
@@ -220,7 +220,7 @@ Defined in: [types.ts:32](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **getByText**(`text`): `HTMLElement`
 
-Defined in: [types.ts:42](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L42)
+Defined in: [types.ts:42](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L42)
 
 #### Parameters
 
@@ -238,7 +238,7 @@ Defined in: [types.ts:42](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **queryByLabelText**(`text`): `HTMLElement` \| `null`
 
-Defined in: [types.ts:48](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L48)
+Defined in: [types.ts:48](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L48)
 
 #### Parameters
 
@@ -256,7 +256,7 @@ Defined in: [types.ts:48](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **queryByRole**(`role`, `opts?`): `HTMLElement` \| `null`
 
-Defined in: [types.ts:38](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L38)
+Defined in: [types.ts:38](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L38)
 
 #### Parameters
 
@@ -280,7 +280,7 @@ Defined in: [types.ts:38](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **queryByTestId**(`id`): `HTMLElement` \| `null`
 
-Defined in: [types.ts:33](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L33)
+Defined in: [types.ts:33](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L33)
 
 #### Parameters
 
@@ -298,7 +298,7 @@ Defined in: [types.ts:33](https://github.com/tito10047/stimulus-test-utils/blob/
 
 > **queryByText**(`text`): `HTMLElement` \| `null`
 
-Defined in: [types.ts:43](https://github.com/tito10047/stimulus-test-utils/blob/9651b413401ab4731158489ae9021bbddc36b5fb/src/types.ts#L43)
+Defined in: [types.ts:43](https://github.com/tito10047/stimulus-test-utils/blob/c64b8f8a71571053963624044ff39793c9b8f3dd/src/types.ts#L43)
 
 #### Parameters
 
